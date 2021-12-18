@@ -30,6 +30,18 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    /* mj : sql 관련 */
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'com.h2database:h2'
+    /* tomcat, web 배포 */
+    implementation 'javax.servlet:jstl'
+    implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+    /* hj : chatting 관련 */
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    /* hj : java - mail 관련 */
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 test {
