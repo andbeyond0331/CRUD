@@ -14,6 +14,7 @@ public class Purchase {
 	private String orderTruckId;
 	private int payPointNo;
 	private int payCouponNo;
+	private int payResNo;
 	private int orderQty;
 	private String orderRequest;
 	private int orderStatus;
@@ -28,5 +29,5 @@ public class Purchase {
 	private int payOption;
 	private int payRefundStatus;
 	private int payPrice;
-	
+
 }

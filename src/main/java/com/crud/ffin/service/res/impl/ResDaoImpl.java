@@ -86,10 +86,17 @@ public class ResDaoImpl implements ResDao {
     }
 
     @Override
-    public void updateUserRes(int resNo, int resStatus) throws Exception {
+    public void updateUserResStatus(int resNo, int resStatus, String memo) throws Exception {
+        System.out.println("resNo = " + resNo + ", resStatus = " + resStatus + ", memo = " + memo);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("resNo",resNo);
         map.put("resStatus", resStatus);
-        sqlSession.update("ResMapper.updateUserRes", map);
+        map.put("memo", memo);
+        sqlSession.update("ResMapper.updateUserRes1", map);
+    }
+
+    @Override
+    public void updateUserRes(ResCatering resCatering) throws Exception {
+        sqlSession.update("ResMapper.updateUserRes2", resCatering);
     }
 }
