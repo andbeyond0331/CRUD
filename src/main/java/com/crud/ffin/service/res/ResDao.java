@@ -22,7 +22,8 @@ public interface ResDao {
     public ResCatering getUserRes(int resNo) throws Exception;
     public AddCatering getTruckServ(int servNo) throws Exception;
 
-    public void updateUserRes(int resNo, int resStatus) throws Exception;
+    public void updateUserResStatus(int resNo, int resStatus, String memo) throws Exception;
+    public void updateUserRes(ResCatering resCatering) throws Exception;
 
 
 

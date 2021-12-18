@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 
 @Service("resServiceImpl")
@@ -64,7 +63,12 @@ public class ResServiceImpl implements ResService{
     }
 
     @Override
-    public void updateUserRes(int resNo, int resStatus) throws Exception {
-        resDao.updateUserRes(resNo, resStatus);
+    public void updateUserResStatus(int resNo, int resStatus, String memo) throws Exception {
+        resDao.updateUserResStatus(resNo, resStatus, memo);
+    }
+
+    @Override
+    public void updateUserRes(ResCatering resCatering) throws Exception {
+        resDao.updateUserRes(resCatering);
     }
 }

@@ -5,13 +5,17 @@ import lombok.Data;
 
 @Data
 public class ResCatering {
-	
+
+	private AddCatering addCatering; //catering service
+	private User resUser; //user
+
 	private int resNo;
-	private int servNo;
-	private String resUserId;
+	//private int servNo;
+	//private String resUserId;
 	private Date resDate;
 	private String resAdd;
 	private String resRequest;
+	private String resTime;
 	private int resQuotation;
 	private int resStatusCode;
 	private String resMemo;
@@ -20,8 +24,8 @@ public class ResCatering {
 	private Date resCancelDate;
 	private int resMenuNo;
 	private int resMenuQty;
-	
-	
-	
+
+
+
 
 }
