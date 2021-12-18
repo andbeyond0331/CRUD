@@ -1,13 +1,15 @@
 package com.crud.ffin.web.res;
 
-
+import com.crud.ffin.common.Page;
 import com.crud.ffin.common.Search;
 import com.crud.ffin.service.domain.AddCatering;
 import com.crud.ffin.service.domain.ResCatering;
 import com.crud.ffin.service.res.ResService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/res/*")
+@PropertySource("classpath:config/common.properties")
 public class ResController {
 
     ///Field
@@ -27,14 +30,14 @@ public class ResController {
         System.out.println(this.getClass());
     }
 
-/*
-    @Value("#{commonProperties['pageUnit']}")
+
+    @Value("${pageUnit}") //pageUnit은 propertySource를 위에 선언하고 @value의 값을 지정해줌
+            //추후 pageUnit과 pageSize 출력되는지 jUnit에서 확인이 필요합니다.
     //@Value("#{commonProperties['pageUnit'] ?: 3}")
     int pageUnit;
 
     @Value("#{commonProperties['pageSize']}")
-    //@Value("#{commonProperties['pageSize'] ?: 2}")
-    int pageSize;*/
+    int pageSize;
 
 
     @RequestMapping( value="addRes", method= RequestMethod.GET)
