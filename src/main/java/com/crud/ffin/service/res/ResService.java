@@ -28,8 +28,10 @@ public interface ResService {
     public ResCatering getUserRes(int resNo) throws Exception;
     public AddCatering getTruckServ(int servNo) throws Exception;
 
-    public void updateUserRes(int resNo, int resStatus) throws Exception;
-
+    // 수락, 취소, 거절시 쓰는 메소드
+    public void updateUserResStatus(int resNo, int resStatus, String memo) throws Exception;
+    // 전체 수정시 쓰는 메소드
+    public void updateUserRes(ResCatering resCatering) throws Exception;
 
 
 
