@@ -10,39 +10,39 @@
 
 
 <resultMap id="userSelectMap" type="user">
-	<result property="userId"		column="user_id"			jdbcType="VARCHAR"/>
-	<result property="userName"	column="user_name"		jdbcType="VARCHAR"/>
-	<result property="nickname"	column="nickname"		jdbcType="VARCHAR"/>
-	<result property="pwd"			column="pwd"			jdbcType="VARCHAR"/>
-	<result property="role"			column="role"			jdbcType="CHAR"/>
-	<result property="email"		column="email"			jdbcType="VARCHAR"/>
-	<result property="phone"		column="phone"			jdbcType="VARCHAR"/>
-	<result property="userImg"		column="user_img"		jdbcType="VARCHAR"/>
-	<result property="sex"			column="sex"				jdbcType="CHAR"/>
-	<result property="birth"		column="birth"			jdbcType="VARCHAR"/>
-	<result property="slot"			column="slot"				jdbcType="NUMERIC"/>
-	<result property="totalPoint"	column="total_point"		jdbcType="NUMERIC"/>
-	<result property="pushAgree"	column="push_agree"		jdbcType="CHAR"/>
-	<result property="regDate"		column="reg_date"		jdbcType="TIMESTAMP"/>
-	<result property="unRegDate"	column="unreg_date"		jdbcType="TIMESTAMP"/>
+	<result property="userId"			column="user_id"		jdbcType="VARCHAR"/>
+	<result property="userName"			column="user_name"		jdbcType="VARCHAR"/>
+	<result property="nickname"			column="nickname"		jdbcType="VARCHAR"/>
+	<result property="pwd"				column="pwd"			jdbcType="VARCHAR"/>
+	<result property="role"				column="role"			jdbcType="CHAR"/>
+	<result property="email"			column="email"			jdbcType="VARCHAR"/>
+	<result property="phone"			column="phone"			jdbcType="VARCHAR"/>
+	<result property="userImg"			column="user_img"		jdbcType="VARCHAR"/>
+	<result property="sex"				column="sex"			jdbcType="CHAR"/>
+	<result property="birth"			column="birth"			jdbcType="VARCHAR"/>
+	<result property="slot"				column="slot"			jdbcType="NUMERIC"/>
+	<result property="totalPoint"		column="total_point"	jdbcType="NUMERIC"/>
+	<result property="pushAgree"		column="push_agree"		jdbcType="CHAR"/>
+	<result property="regDate"			column="reg_date"		jdbcType="TIMESTAMP"/>
+	<result property="unRegDate"		column="unreg_date"		jdbcType="TIMESTAMP"/>
 </resultMap>
 
 
 
  <resultMap id="pointSelectMap" type="point">
-	<result property="pointId"		column="point_id"			jdbcType="VARCHAR"/>
-	<result property="userId"		column="user_id"			jdbcType="VARCHAR"/>
-	<result property="refId"		column="ref_id"			jdbcType="VARCHAR"/>
-	<result property="usedType"		column="used_type"			jdbcType="CHAR"/>
+	<result property="pointId"			column="point_id"			jdbcType="VARCHAR"/>
+	<result property="userId"			column="user_id"			jdbcType="VARCHAR"/>
+	<result property="refId"			column="ref_id"				jdbcType="VARCHAR"/>
+	<result property="usedType"			column="used_type"			jdbcType="CHAR"/>
 	<result property="usedPoint"		column="used_point"			jdbcType="NUMERIC"/>
-	<result property="usedDate"		column="used_date"			jdbcType="TIMESTAMP"/>
+	<result property="usedDate"			column="used_date"			jdbcType="TIMESTAMP"/>
 </resultMap>	
 
 <resultMap id="tripSurveySelectMap" type="tripSurvey">
-	<result property="userId"		column="user_id"			jdbcType="VARCHAR"/>
-	<result property="surveyId"		column="survey_id"			jdbcType="VARCHAR"/>
-	<result property="surveyType"		column="survey_type"			jdbcType="VARCHAR"/>
-	<result property="surveyChoice"		column="survey_choice"			jdbcType="VARCHAR"/>
+	<result property="userId"			column="user_id"			jdbcType="VARCHAR"/>
+	<result property="surveyId"			column="survey_id"			jdbcType="VARCHAR"/>
+	<result property="surveyType"		column="survey_type"		jdbcType="VARCHAR"/>
+	<result property="surveyChoice"		column="survey_choice"		jdbcType="VARCHAR"/>
 	<result property="surveyImg"		column="survey_img"			jdbcType="VARCHAR"/>
 </resultMap>	
 
@@ -50,62 +50,61 @@
 
 <resultMap id="postSelectMap" type="post">
 		<result property="postId" 			column="post_id" 			jdbcType="VARCHAR"/>
-		<result property="postWriterId"	column="post_writer_id" 		jdbcType="VARCHAR" />
-		<result property="nickName" 				column="nickname" 					jdbcType="VARCHAR" />
-		<result property="boardName" 	column="board_name" 		jdbcType="CHAR" />
-		<result property="postGrade" 				column="post_grade" 					jdbcType="CHAR" />
-		<result property="postTitle" 				column="post_title" 					jdbcType="VARCHAR" />
-		<result property="postContent" 			column="post_content" 		jdbcType="CLOB" />
-		<result property="postDate" 				column="post_date" 					jdbcType="TIMESTAMP" />
-		<result property="accCount"					column="acc_count"				jdbcType="NUMERIC"	/>
-		<result property="accPerson" 				column="acc_person" 					jdbcType="NUMERIC" />
-		<result property="accStartDate" 				column="acc_start_date" 					jdbcType="TIMESTAMP" />
-		<result property="accEndDate" 				column="acc_end_date" 					jdbcType="TIMESTAMP" />
-		<result property="postLikeCount" 				column="post_like_count" 					jdbcType="NUMERIC" />
-		<result property="planId" 				column="plan_id" 					jdbcType="VARCHAR" /> 
-		<result property="qnaFirstCate" 				column="qna_first_cate" 					jdbcType="CHAR" />
-		<result property="qnaSecondCate" 				column="qna_second_cate" 					jdbcType="CHAR" />
-		<result property="views" 				column="views" 					jdbcType="NUMERIC" />
-		<result property="comments" 				column="comments" 		jdbcType="NUMERIC"/>
-		<result property="blocked" 				column="blocked" 					jdbcType="CHAR" />
-		<result property="deleted" 				column="deleted" 					jdbcType="CHAR" />
-		<result property="postLikeFlag" 				column="like_check" 					jdbcType="CHAR" />
-		<result property="nextId" 				column="next_id" 		jdbcType="VARCHAR"/>
-		<result property="nextTitle" 				column="next_title" 					jdbcType="VARCHAR" />
-		<result property="prevId" 				column="prev_id" 					jdbcType="VARCHAR" />
-		<result property="prevTitle" 				column="prev_title" 					jdbcType="VARCHAR" />
+		<result property="postWriterId"		column="post_writer_id" 	jdbcType="VARCHAR" />
+		<result property="nickName" 		column="nickname" 			jdbcType="VARCHAR" />
+		<result property="boardName" 		column="board_name" 		jdbcType="CHAR" />
+		<result property="postGrade" 		column="post_grade" 		jdbcType="CHAR" />
+		<result property="postTitle" 		column="post_title" 		jdbcType="VARCHAR" />
+		<result property="postContent" 		column="post_content" 		jdbcType="CLOB" />
+		<result property="postDate" 		column="post_date" 			jdbcType="TIMESTAMP" />
+		<result property="accCount"			column="acc_count"			jdbcType="NUMERIC"	/>
+		<result property="accPerson" 		column="acc_person" 		jdbcType="NUMERIC" />
+		<result property="accStartDate" 	column="acc_start_date" 	jdbcType="TIMESTAMP" />
+		<result property="accEndDate" 		column="acc_end_date" 		jdbcType="TIMESTAMP" />
+		<result property="postLikeCount"	column="post_like_count" 	jdbcType="NUMERIC" />
+		<result property="planId" 			column="plan_id" 			jdbcType="VARCHAR" />
+		<result property="qnaFirstCate" 	column="qna_first_cate" 	jdbcType="CHAR" />
+		<result property="qnaSecondCate"	column="qna_second_cate" 	jdbcType="CHAR" />
+		<result property="views" 			column="views" 				jdbcType="NUMERIC" />
+		<result property="comments" 		column="comments" 			jdbcType="NUMERIC"/>
+		<result property="blocked" 			column="blocked" 			jdbcType="CHAR" />
+		<result property="deleted" 			column="deleted" 			jdbcType="CHAR" />
+		<result property="postLikeFlag" 	column="like_check" 		jdbcType="CHAR" />
+		<result property="nextId" 			column="next_id" 			jdbcType="VARCHAR"/>
+		<result property="nextTitle" 		column="next_title" 		jdbcType="VARCHAR" />
+		<result property="prevId" 			column="prev_id" 			jdbcType="VARCHAR" />
+		<result property="prevTitle" 		column="prev_title" 		jdbcType="VARCHAR" />
 	</resultMap>
 	
 	
 <resultMap id="commentSelectMap" type="comment">
 		<result property="parentCmtId"		column="parent_cmt_id"		jdbcType="VARCHAR"/>
 		<result property="cmtId" 			column="cmt_id" 			jdbcType="VARCHAR"/>
-		<result property="postId"	column="post_id" 		jdbcType="VARCHAR" />
-		<result property="cmtWriterId" 				column="writer_id" 					jdbcType="VARCHAR" />
-		<result property="nickName"			column="nickname"					jdbcType="VARCHAR" />
-		<result property="cmtContent" 				column="cmt_content" 					jdbcType="VARCHAR" />
-		<result property="cmtDate" 			column="cmt_date" 		jdbcType="TIMESTAMP" />
-		<result property="secret" 				column="secret" 					jdbcType="CHAR" />
-		<result property="blocked" 				column="blocked" 					jdbcType="CHAR" />
-		<result property="deleted" 				column="deleted" 					jdbcType="CHAR" />
-		<result property="cmtLikeCount" 				column="cmt_like_count" 					jdbcType="NUMERIC" />
-		<result property="cmtLikeFlag" 				column="like_check" 					jdbcType="CHAR" />
-		<result property="postWriterId"	column="post_writer_id" 		jdbcType="VARCHAR" />
-		<result property="postTitle" 				column="post_title" 					jdbcType="VARCHAR" />
-		<result property="boardName" 	column="board_name" 		jdbcType="CHAR" />
+		<result property="postId"			column="post_id" 			jdbcType="VARCHAR" />
+		<result property="cmtWriterId" 		column="writer_id" 			jdbcType="VARCHAR" />
+		<result property="nickName"			column="nickname"			jdbcType="VARCHAR" />
+		<result property="cmtContent" 		column="cmt_content" 		jdbcType="VARCHAR" />
+		<result property="cmtDate" 			column="cmt_date" 			jdbcType="TIMESTAMP" />
+		<result property="secret" 			column="secret" 			jdbcType="CHAR" />
+		<result property="blocked" 			column="blocked" 			jdbcType="CHAR" />
+		<result property="deleted" 			column="deleted" 			jdbcType="CHAR" />
+		<result property="cmtLikeCount" 	column="cmt_like_count" 	jdbcType="NUMERIC" />
+		<result property="cmtLikeFlag" 		column="like_check" 		jdbcType="CHAR" />
+		<result property="postWriterId"		column="post_writer_id" 	jdbcType="VARCHAR" />
+		<result property="postTitle" 		column="post_title" 		jdbcType="VARCHAR" />
+		<result property="boardName" 		column="board_name" 		jdbcType="CHAR" />
 	</resultMap>
 
 
 <resultMap type="plan" id="planSelectMap">
-		<result	jdbcType="VARCHAR"		column="plan_id"		property="planId"/>
-		<result	jdbcType="VARCHAR"		column="plan_master_id"	property="planMaster.userId"/>
-		<result	jdbcType="VARCHAR"		column="plan_title"		property="planTitle"/>
-		<result	jdbcType="VARCHAR"		column="plan_img"		property="planImg"/>
-		<result	jdbcType="CHAR"			column="plan_type"		property="planType"/>
-		<result	jdbcType="TIMESTAMP"	column="plan_reg_date"	property="planRegDate"/>
-		<result	jdbcType="TIMESTAMP"	column="start_date"		property="startDate"/>
-		<result	jdbcType="VARCHAR"		column="plan_status"	property="planStatus"/>
-		
+		<result	jdbcType="VARCHAR"		column="plan_id"			property="planId"/>
+		<result	jdbcType="VARCHAR"		column="plan_master_id"		property="planMaster.userId"/>
+		<result	jdbcType="VARCHAR"		column="plan_title"			property="planTitle"/>
+		<result	jdbcType="VARCHAR"		column="plan_img"			property="planImg"/>
+		<result	jdbcType="CHAR"			column="plan_type"			property="planType"/>
+		<result	jdbcType="TIMESTAMP"	column="plan_reg_date"		property="planRegDate"/>
+		<result	jdbcType="TIMESTAMP"	column="start_date"			property="startDate"/>
+		<result	jdbcType="VARCHAR"		column="plan_status"		property="planStatus"/>
 		<result	jdbcType="NUMERIC"		column="plan_total_days"	property="planTotalDays"/>
 		<result	jdbcType="NUMERIC"		column="plan_party_size"	property="planPartySize"/>
 </resultMap>
