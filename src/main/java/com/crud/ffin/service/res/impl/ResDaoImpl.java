@@ -28,28 +28,24 @@ public class ResDaoImpl implements ResDao {
         System.out.println(this.getClass());
     }
 
-/*
 
     @Override
-    public List<ResCatering> getResCalUser(String userId) throws Exception {
-        return sqlSession.selectList("ResMapper.getUserResList", userId);
-        // getResCalUser 을 호출하면 리스트가 뽑혀서 달력에 찍어줄 예정이므로 mapper의 이름은 getUserResList로 잡음
-        // 이걸 이름을 동일하게 갈지는 고민을 해 보겠음
-    }
+    public Map<String, Object> getUserResList(Search search, String userId, String resStatusCode) throws Exception {
+        // userId에 따른 user의 예약 내역 dao
+        // search Condition 으로 구분할 것 : controller 에서 구분해서 mapper에서 처리
+         /*
+         21. 12. 20
+         searchCondition 으로 나누려고 하고 있다.
+         0이면 user의 전체 내역을
+         1이면 user의 정보 중에서 resStatus를 확인하는 값을
+         mapper에서 구분하는 것으로.
+         그럼 애초에 status도 함께 넣는 메소드로 변경해야 할 듯.
+         */
 
-    @Override
-    public List<AddCatering> getResCalTruck(String truckId) throws Exception {
-        return sqlSession.selectList("ResMapper.getTruckResList", truckId);
-        // getResCalTruck 을 호출하면 리스트가 뽑혀서 달력에 찍어줄 예정이므로 mapper의 이름은 getTruckResList 잡음
-        // 이걸 이름을 동일하게 갈지는 고민을 해 보겠음
-    }
-*/
-
-    @Override
-    public Map<String, Object> getUserResList(Search search, String userId) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("search",search);
         map.put("userId", userId);
+        map.put("resStatusCode", resStatusCode);
         List<ResCatering> list = sqlSession.selectList("ResMapper.getUserResList", map);
         map.put("list",list);
         return map;

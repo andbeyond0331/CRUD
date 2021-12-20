@@ -51,7 +51,16 @@
 			RES_REAL_QUOTATION,
 			RES_STATUS_CODE
 		FROM res_catering
-		WHERE RES_USER_ID = #{userId}
+		<if test="search.searchCondition ==0">
+			<where>
+				RES_USER_ID = #{userId}
+			</where>
+		</if>
+		<if test="search.searchCondition ==1">
+			<where>
+				RES_USER_ID = #{userId} AND RES_STATUS_CODE = #{resStatusCode}
+			</where>
+		</if>
 	</select>
 
 	<select id="getTruckResList"	parameterType="map"	resultMap="ServSelectMap">

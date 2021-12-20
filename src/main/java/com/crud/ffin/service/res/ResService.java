@@ -18,7 +18,7 @@ public interface ResService {
     // 3. userId와 truckId를 이 메소드에 넣지 말고
     // 4. 애초에 service 호출할 때 search에 담으면 어떨까 함. 아님 애초에 search랑 id를 map에 담아서 보내도 되고.
     // 5. 뭐가 좋을까? 고민해보자.
-    public Map<String, Object> getUserResList(Search search, String userId) throws Exception;
+    public Map<String, Object> getUserResList(Search search, String userId,  String resStatusCode) throws Exception;
     public Map<String, Object> getTruckResList(Search search, String truckId) throws Exception;
 
     public void addRes(ResCatering resCatering) throws Exception;

@@ -12,7 +12,7 @@ public interface ResDao {
    /* public List<ResCatering> getResCalUser(String userId) throws Exception;
     public List<AddCatering> getResCalTruck(String truckId) throws Exception;*/
 
-    public Map<String, Object> getUserResList(Search search, String userId) throws Exception;
+    public Map<String, Object> getUserResList(Search search, String userId,  String resStatusCode) throws Exception;
     public Map<String, Object> getTruckResList(Search search, String truckId) throws Exception;
 
     public void addRes(ResCatering resCatering) throws Exception;

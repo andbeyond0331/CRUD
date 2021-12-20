@@ -100,7 +100,15 @@ public class ResController {
         // 이게 user의 캘린더를 불러오는거............... ㅎ
         // 1) user의 목록을 불러올 수 있어야 하고 + 그 중에서 status 값이 '예약완료'인 5인 것만 불러와야해서 이걸 메소드 처리 할 지 아님 불러와서 status값이 5인것만 화면에 출력할지 고민중
 
-        Map<String , Object> map = resService.getUserResList(search, userId);
+         /*21. 12. 20
+         searchCondition 으로 나누려고 하고 있다. (getUserResList를!)
+         0이면 user의 전체 내역을
+         1이면 user의 정보 중에서 resStatus를 확인하는 값을
+         mapper에서 구분하는 것으로.*/
+        String resStatusCode="5"; //예약 완료된 건에 대하여 출력
+                                // 추후 화면단에서 보낼 수도 있음
+        search.setSearchCondition("1");
+        Map<String , Object> map = resService.getUserResList(search, userId, resStatusCode);
         // 2) 전체 서비스를 알아야 함 (select all) => service, dao 생성 필요
 
         // 이 때 이걸 한 화면에서 다 뿌릴 수 있느냐가 궁금.

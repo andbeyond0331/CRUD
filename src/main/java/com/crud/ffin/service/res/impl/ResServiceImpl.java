@@ -34,8 +34,8 @@ public class ResServiceImpl implements ResService{
     }*/
 
     @Override
-    public Map<String, Object> getUserResList(Search search, String userId) throws Exception {
-        return resDao.getUserResList(search, userId);
+    public Map<String, Object> getUserResList(Search search, String userId,  String resStatusCode) throws Exception {
+        return resDao.getUserResList(search, userId, resStatusCode);
     }
 
     @Override
