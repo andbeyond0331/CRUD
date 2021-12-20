@@ -4,35 +4,18 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="CommunityMapper">	
+<mapper namespace="MenuMapper">
  	
-	<resultMap id="postSelectMap" type="post">
-		<result property="postId" 			column="post_id" 			jdbcType="VARCHAR"/>
-		<result property="postWriterId"	column="post_writer_id" 		jdbcType="VARCHAR" />
-		<result property="nickName" 				column="nickname" 					jdbcType="VARCHAR" />
-		<result property="boardName" 	column="board_name" 		jdbcType="CHAR" />
-		<result property="postGrade" 				column="post_grade" 					jdbcType="CHAR" />
-		<result property="postTitle" 				column="post_title" 					jdbcType="VARCHAR" />
-		<result property="postContent" 			column="post_content" 		jdbcType="CLOB" />
-		<result property="postDate" 				column="post_date" 					jdbcType="TIMESTAMP" />
-		<result property="accCount"					column="acc_count"				jdbcType="NUMERIC"	/>
-		<result property="accPerson" 				column="acc_person" 					jdbcType="NUMERIC" />
-		<result property="accStartDate" 				column="acc_start_date" 					jdbcType="TIMESTAMP" />
-		<result property="accEndDate" 				column="acc_end_date" 					jdbcType="TIMESTAMP" />
-		<result property="postLikeCount" 				column="post_like_count" 					jdbcType="NUMERIC" />
-		<result property="planId" 				column="plan_id" 					jdbcType="VARCHAR" /> 
-		<result property="qnaFirstCate" 				column="qna_first_cate" 					jdbcType="CHAR" />
-		<result property="qnaSecondCate" 				column="qna_second_cate" 					jdbcType="CHAR" />
-		<result property="qnaKategorie" 				column="qna_kategorie" 					jdbcType="CHAR" />
-		<result property="views" 				column="views" 					jdbcType="NUMERIC" />
-		<result property="comments" 				column="comments" 		jdbcType="NUMERIC"/>
-		<result property="blocked" 				column="blocked" 					jdbcType="CHAR" />
-		<result property="deleted" 				column="deleted" 					jdbcType="CHAR" />
-		<result property="postLikeFlag" 				column="like_check" 					jdbcType="CHAR" />
-		<result property="nextId" 				column="next_id" 		jdbcType="VARCHAR"/>
-		<result property="nextTitle" 				column="next_title" 					jdbcType="VARCHAR" />
-		<result property="prevId" 				column="prev_id" 					jdbcType="VARCHAR" />
-		<result property="prevTitle" 				column="prev_title" 					jdbcType="VARCHAR" />
+	<resultMap id="menuSelectMap" type="menu">
+		<result property="menuNo" 			column="MENU_NO" 			jdbcType="INT"/>
+		<result property="menuTruckId"	column="MENU_TRUCK_ID" 		jdbcType="VARCHAR" />
+		<result property="menuName" 				column="MENU_NAME" 					jdbcType="VARCHAR" />
+		<result property="menuPrice" 	column="MENU_PRICE" 		jdbcType="INT" />
+		<result property="menuDetail" 				column="MENU_DETAIL" 					jdbcType="VARCHAR" />
+		<result property="isSigMenu" 				column="IS_SIG_MENU" 					jdbcType="CHAR" />
+		<result property="menuImg1" 			column="MENU_IMG1" 		jdbcType="VARCHAR" />
+		<result property="menuImg2" 				column="MENU_IMG2" 					jdbcType="VARCHAR" />
+		<result property="menuImg3"					column="MENU_IMG3"				jdbcType="VARCHAR"	/>
 	</resultMap>
 	
 	<resultMap id="commentSelectMap" type="comment">
@@ -96,16 +79,32 @@
 		<result	jdbcType="VARCHAR"		column="party_user_nickname"		property="partyUserNickname"/>
 	</resultMap>
 
-	<insert id="addOffer"	parameterType="offer">
-		INSERT 
-		INTO offer( offer_id, offer_type, ref_id, offer_msg, offer_status, from_user_id, to_user_id, offer_date ) 
-		VALUES 		( TO_CHAR(seq_offer_offer_id.NEXTVAL), 'A', #{refId}, #{offerMsg}, 'S', #{fromUserId}, #{toUserId}, SYSDATE )
-	</insert>
+	<insert id="addMenu"	parameterType="menu">
+		INSERT INTO `ffin`.`menu`
+		(`MENU_NO`,
+		`MENU_TRUCK_ID`,
+		`MENU_NAME`,
+		`MENU_PRICE`,
+		`MENU_DETAIL`,
+		`IS_SIG_MENU`,
+		`MENU_IMG1`,
+		`MENU_IMG2`,
+		`MENU_IMG3`)
+		VALUES
+		({MENU_NO : INT},
+		{MENU_TRUCK_ID:VARCHAR},
+		{MENU_NAME: VARCHAR},
+		{MENU_PRICE: INT},
+		{MENU_DETAIL: VARCHAR},
+		{IS_SIG_MENU: CHAR},
+		{MENU_IMG1: VARCHAR},
+		{MENU_IMG2: VARCHAR},
+		{MENU_IMG3: VARCHAR})
+			</insert>
 
-	<insert id="addParty" parameterType="string">
-		INSERT 
-		INTO party( party_id, party_user_id, party_type, ref_id, party_role ) 
-		VALUES ( TO_CHAR(seq_party_party_id.NEXTVAL), #{partyUserId}, 'A', TO_CHAR(seq_post_post_id.CURRVAL), 'K' )
+	<insert id="addOptionGroup" parameterType="optionGroup">
+		insert into optiongroup (MENU_NO, OPTION_GROUP_NO, OPTION_NO, OPTION_GROUP_NAME, OPTION_NAME, OPTION_PRICE)
+		values ()
 	</insert>
 	
 	<insert 	id="addPost"		parameterType="post" >
