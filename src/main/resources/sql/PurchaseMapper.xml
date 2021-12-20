@@ -6,7 +6,7 @@
 
 <mapper namespace="OrderMapper">
 	
-	<resultMap type="order" id="orderSelectMap">
+	<resultMap type="purchase" id="purchaseSelectMap">
 	    <!--Purchase Domain-->
 		<result property="orderNo" 				column="ORDER_NO" 				jdbcType="NUMERIC"/>
   		<result property="orderUserId" 			column="ORDER_USER_ID" 			jdbcType="VARCHAR"/>
@@ -28,10 +28,10 @@
   		<result property="payOption" 			column="PAY_OPTION" 			jdbcType="CHAR" />
   		<result property="payRefundStatus" 		column="PAY_REFUND_STATUS" 		jdbcType="CHAR" />
   		<result property="payPrice" 			column="PAY_PRICE" 				jdbcType="NUMERIC" />
+	</resultMap>
 
 
-
-
+	<resultMap type="orderdetail" id="orderdetailSelectMap">
 		<!--OrderDetail Domain-->
 		<result property="odNo" 				column="OD_NO" 					jdbcType="NUMERIC" />
   		<result property="odOrderNo" 			column="OD_ORDER_NO" 			jdbcType="NUMERIC" />
@@ -43,9 +43,10 @@
   		<result property="odMenuPrice" 			column="OD_MENU_PRICE" 			jdbcType="VARCHAR" />
   		<result property="odOptionPrice" 		column="OD_OPTION_PRICE" 		jdbcType="VARCHAR" />
   		<result property="odMenuImage" 			column="OD_MENU_IMAGE" 			jdbcType="VARCHAR" />
+	</resultMap>
 
 
-
+	<resultMap type="point" id="pointSelectMap">
 		<!--point Domain-->
 		<result property="pointNo"				column="POINT_NO"				jdbcType="NUMERIC"	/>
   		<result property="pointUserId" 			column="POINT_USER_ID"			jdbcType="VARCHAR"/>
@@ -54,9 +55,10 @@
 		<result property="pointPlmnStatus"		column="POINT_PLMN_STATUS"		jdbcType="CHAR"/>
 		<result property="pointStatus"			column="POINT_STATUS"			jdbcType="CHAR"/>
 		<result property="pointBirthCode"		column="POINT_BIRTH_CODE"		jdbcType="NUMERIC"/>
+	</resultMap>
 
 
-
+	<resultMap type="coupon" id="couponSelectMap">
 		<!--coupon Domain-->
 		<result property="couponNO"				column="COUPON_NO"					jdbcType="NUMERIC"/>
 		<result property="couponReceivedUserId"	column="COUPON_RECEIVED_USER_ID"	jdbcType="VARCHAR"/>
@@ -277,51 +279,45 @@
 					
   	</select>
 
-	<select id="getOrderList" parameterType="map" resultMap="SelectMap">
+	<select id="getOrderList" parameterType="map" resultMap="purchaseSelectMap">
 		SELECT
-			r.room_id, o.order_id , o.order_date, o.order_status , o.buyer_id , o.buyer_name , o.buyer_phone , o.buyer_email , o.total_amount , o.pay_point ,o.pay_instal, o.actual_amount , o.pay_opt , o.refund_date , o.room_id ,  p.used_point , p.used_type , p.ref_id
-		FROM orders o , room r , point p
+			PUR.ORDER_NO,PUR.ORDER_USER_ID,PUR.ORDER_TRUCK_ID,PUR.ORDER_STATUS,PUR.ORDER_PICK_UP_TIME,PUR.ORDER_COOKING_TIME,ORD.OD_MENU_NAME
+		FROM ffin.purchase pur,ffin.orderdetail ord
 		WHERE truck_id = #{value}
+		AND ord.od_order_no = pur.order_no
+		AND od_menu_qty_flag = 0;
 
 	</select>
 
 	<select id="getPurchaseList" parameterType="map" resultMap="orderSelectMap">
 		SELECT
-			r.room_id, o.order_id , o.order_date, o.order_status , o.buyer_id , o.buyer_name , o.buyer_phone , o.buyer_email , o.total_amount , o.pay_point ,o.pay_instal, o.actual_amount , o.pay_opt , o.refund_date , o.room_id ,  p.used_point , p.used_type , p.ref_id
-		FROM orders o , room r , point p
-		WHERE r.room_id = #{value}
-		  AND r.room_id(+)=o.room_id
-		  AND p.ref_id(+)=o.room_id
-
+		*
+		FROM purchase
+		WHERE order_user_id = #{value}
 	</select>
 
 	<select id="getSalesList" parameterType="map" resultMap="orderSelectMap">
 		SELECT
-			r.room_id, o.order_id , o.order_date, o.order_status , o.buyer_id , o.buyer_name , o.buyer_phone , o.buyer_email , o.total_amount , o.pay_point ,o.pay_instal, o.actual_amount , o.pay_opt , o.refund_date , o.room_id ,  p.used_point , p.used_type , p.ref_id
-		FROM orders o , room r , point p
-		WHERE r.room_id = #{value}
-		  AND r.room_id(+)=o.room_id
-		  AND p.ref_id(+)=o.room_id
+		*
+		FROM purchase
+		WHERE order_truck_id = #{value}
 
 	</select>
 
 	<select id="getPointList" parameterType="map" resultMap="orderSelectMap">
 		SELECT
-			r.room_id, o.order_id , o.order_date, o.order_status , o.buyer_id , o.buyer_name , o.buyer_phone , o.buyer_email , o.total_amount , o.pay_point ,o.pay_instal, o.actual_amount , o.pay_opt , o.refund_date , o.room_id ,  p.used_point , p.used_type , p.ref_id
-		FROM orders o , room r , point p
-		WHERE r.room_id = #{value}
-		  AND r.room_id(+)=o.room_id
-		  AND p.ref_id(+)=o.room_id
+			u.USER_TOTAL_POINT,p.point_user_id,p.POINT_AMT,p.POINT_NO,p.POINT_USE_DATE,p.POINT_BIRTH_CODE,p.POINT_PLMN_STATUS,p.POINT_STATUS
+		FROM ffin.user u,ffin.point p
+		WHERE u.USER_ID= p.POINT_USER_ID
+		and u.user_id = #{value}
 
 	</select>
 
 	<select id="getPurchase" parameterType="String" resultMap="orderSelectMap">
 		SELECT
-			r.room_id, o.order_id , o.order_date, o.order_status , o.buyer_id , o.buyer_name , o.buyer_phone , o.buyer_email , o.total_amount , o.pay_point ,o.pay_instal, o.actual_amount , o.pay_opt , o.refund_date , o.room_id ,  p.used_point , p.used_type , p.ref_id
-		FROM orders o , room r , point p
-		WHERE r.room_id = #{value}
-		  AND r.room_id(+)=o.room_id
-		  AND p.ref_id(+)=o.room_id
+			*
+		FROM ffin.purchase
+		WHERE order_no = #{value}
 
 	</select>
 
@@ -337,21 +333,17 @@
 
 	<select id="getCoupon" parameterType="String" resultMap="orderSelectMap">
 		SELECT
-			r.room_id, o.order_id , o.order_date, o.order_status , o.buyer_id , o.buyer_name , o.buyer_phone , o.buyer_email , o.total_amount , o.pay_point ,o.pay_instal, o.actual_amount , o.pay_opt , o.refund_date , o.room_id ,  p.used_point , p.used_type , p.ref_id
-		FROM orders o , room r , point p
-		WHERE r.room_id = #{value}
-		  AND r.room_id(+)=o.room_id
-		  AND p.ref_id(+)=o.room_id
+		 coupon_dc_price
+		FROM ffin.coupon
+		WHERE coupon_no = #{value}
 
 	</select>
 
 	<select id="getTotalPoint" parameterType="String" resultMap="orderSelectMap">
 		SELECT
-			r.room_id, o.order_id , o.order_date, o.order_status , o.buyer_id , o.buyer_name , o.buyer_phone , o.buyer_email , o.total_amount , o.pay_point ,o.pay_instal, o.actual_amount , o.pay_opt , o.refund_date , o.room_id ,  p.used_point , p.used_type , p.ref_id
-		FROM orders o , room r , point p
-		WHERE r.room_id = #{value}
-		  AND r.room_id(+)=o.room_id
-		  AND p.ref_id(+)=o.room_id
+		user_total_point
+		FROM ffin.user
+		WHERE user_id = #{value}
 
 	</select>
 
