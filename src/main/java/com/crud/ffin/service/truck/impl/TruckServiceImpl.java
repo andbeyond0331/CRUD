@@ -20,16 +20,13 @@ public class TruckServiceImpl implements TruckService{
     @Autowired
     @Qualifier("truckDaoImpl")
     private TruckDao truckDao;
-    private Truck truck;
 
     public void setTruckDao(TruckDao truckDao) {
-
         this.truckDao = truckDao;
     }
 
     ///Constructor
     public TruckServiceImpl() {
-
         System.out.println(this.getClass());
     }
 
@@ -154,7 +151,6 @@ public class TruckServiceImpl implements TruckService{
     @Override
     public void emailAuth(Truck truck) throws Exception {
 
-        this.truck = truck;
     }
 
     @Override

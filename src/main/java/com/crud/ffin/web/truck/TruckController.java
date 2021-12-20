@@ -102,7 +102,7 @@ public class TruckController {
         //Business Logic
         Truck dbTruck = truckService.getTruck(truck.getTruckId());
 
-        if (truck.getPassword().equals(dbTruck.getPassword())) {
+        if (truck.getTruckPassword().equals(dbTruck.getTruckPassword())) {
             session.setAttribute("truck", dbTruck);
         }
 
