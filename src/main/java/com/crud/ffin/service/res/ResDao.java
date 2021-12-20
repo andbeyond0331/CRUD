@@ -25,6 +25,7 @@ public interface ResDao {
     public void updateUserResStatus(int resNo, int resStatus, String memo) throws Exception;
     public void updateUserRes(ResCatering resCatering) throws Exception;
 
-
+    /* 예약 가능한 모든 케이터링 서비스 */
+    public List<AddCatering>  getTruckAllServList(Search search) throws Exception;
 
 }

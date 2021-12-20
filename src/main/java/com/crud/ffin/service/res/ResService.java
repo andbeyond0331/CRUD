@@ -33,7 +33,8 @@ public interface ResService {
     // 전체 수정시 쓰는 메소드
     public void updateUserRes(ResCatering resCatering) throws Exception;
 
-
+    /* 예약 가능한 모든 케이터링 서비스 */
+    public List<AddCatering>  getTruckAllServList(Search search) throws Exception;
 
 
 

@@ -70,6 +70,23 @@
 		WHERE SERV_TRUCK_ID = #{truckId}
 	</select>
 
+
+	<select id="getTruckAllServList"	parameterType="map"	resultMap="ServSelectMap">
+		SELECT
+			SERV_NO,
+			SERV_TRUCK_ID,
+			SERV_DATE,
+			SERV_TIME,
+			SERV_LOCATION,
+			SERV_MENU_NAME,
+			SERV_MENU_PRICE,
+			SERV_MENU_IMG,
+			SERV_MENU_MIN_QTY,
+			SERV_MENU_MAX_QTY
+		FROM add_catering
+	</select>
+
+
 	<insert id="addRes" parameterType="ResSelectMap">
 		INSERT INTO add_catering (SERV_TRUCK_ID, SERV_DATE, SERV_TIME, SERV_LOCATION, SERV_MENU_NAME,
 								  SERV_MENU_PRICE, SERV_MENU_IMG, SERV_MENU_MIN_QTY, SERV_MENU_MAX_QTY)

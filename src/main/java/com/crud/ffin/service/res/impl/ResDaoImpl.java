@@ -99,4 +99,9 @@ public class ResDaoImpl implements ResDao {
     public void updateUserRes(ResCatering resCatering) throws Exception {
         sqlSession.update("ResMapper.updateUserRes2", resCatering);
     }
+
+    @Override
+    public List<AddCatering> getTruckAllServList(Search search) throws Exception {
+        return sqlSession.selectList("ResMapper.getTruckAllServList", search);
+    }
 }
