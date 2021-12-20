@@ -10,7 +10,7 @@ public class Coupon {
 	private String couponReceivedUserId; //airline
 	private int couponDcPrice; //price
 	private int  couponStatus; //trip_course
-	private int couponWeatherType; //dep_city
+	private int couponType; //쿠폰생성되는 날짜
 
 	
 	

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service("purchaseServiceImpl")
@@ -27,12 +26,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Override
     public void addCart(OrderDetail orderDetail) throws Exception{
-        purchaseDao.addCart(orderDetail);
+       purchaseDao.addCart(orderDetail);
 
-    }//장바구니에 정보 등록
+    }//장바구니에 정보 등록, 등록된 주분번호 가져오기
     @Override
-    public void addPurchase(Purchase purchase)throws Exception{
-        purchaseDao.addPurchase(purchase);
+    public int addPurchase(Purchase purchase)throws Exception{
+        return purchaseDao.addPurchase(purchase);
     }
     //주문번호 생성을 위해서
     @Override
@@ -52,10 +51,6 @@ public class PurchaseServiceImpl implements PurchaseService {
         purchaseDao.updatePurchase(purchase);
     } //결제 시 결제에 대한 정보 업데이트
     @Override
-    public void updateOrderRefusal (Purchase purchase) throws Exception{
-        purchaseDao.updateOrderRefusal(purchase);
-    } //주문취소 사유
-    @Override
     public void updateTotalPoint (User user)throws Exception{
         purchaseDao.updateTotalPoint(user);
     } //총포인트 수정
@@ -64,14 +59,6 @@ public class PurchaseServiceImpl implements PurchaseService {
         purchaseDao.updateCouponStatus(coupon);
     } //쿠폰사용으로 사용유무수정
     @Override
-    public void updateOrderCancel (Purchase purchase)throws Exception{
-        purchaseDao.updateOrderCancel(purchase);
-    } //주문취소로 주문상태변경,주문취소사유
-    @Override
-    public void updaterefundStatus(Purchase purchase)throws Exception{
-        purchaseDao.updaterefundStatus(purchase);
-    }//주문거절로 주문상태변경,주문거절사유
-    @Override
     public void updateOrderTranCode (Purchase purchase) throws Exception{
         purchaseDao.updateOrderTranCode(purchase);
     }//주문접수로 주문상태변경
@@ -79,6 +66,18 @@ public class PurchaseServiceImpl implements PurchaseService {
     public void updateOrderCookingTime (Purchase purchase)throws Exception {
         purchaseDao.updateOrderCookingTime(purchase);
     }//주문접수 시 예상조리시간
+    @Override
+    public void updateOrderRefusal (Purchase purchase) throws Exception{
+        purchaseDao.updateOrderRefusal(purchase);
+    } //주문거절로 주문상태변경,주문거절사유
+    @Override
+    public void updateOrderCancel (Purchase purchase)throws Exception{
+        purchaseDao.updateOrderCancel(purchase);
+    } //주문취소로 주문상태변경,주문취소사유
+    @Override
+    public void updaterefundStatus(Purchase purchase)throws Exception{
+        purchaseDao.updateRefundStatus(purchase);
+    }//환불처리유무
     @Override
     public void updateOrder(Purchase purchase)throws Exception{
         purchaseDao.updateOrder(purchase);
@@ -95,9 +94,9 @@ public class PurchaseServiceImpl implements PurchaseService {
         return map;
     } //쿠폰 리스트를 출력
     @Override
-    public Map<String,Object> getCartList(Search search,int orderNo)throws Exception{
+    public Map<String,Object> getCartList(int orderNo)throws Exception{
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("list", purchaseDao.getCartList(search, orderNo));
+        map.put("list", purchaseDao.getCartList(orderNo));
         return map;
     } //주문상세에 있는 정보 List?로 가져옴
     @Override
@@ -138,8 +137,8 @@ public class PurchaseServiceImpl implements PurchaseService {
         return purchaseDao.getCoupon(couponNo);
     }// 쿠폰 할인금
     @Override
-    public int getPoint (String userId)throws Exception{
-        return purchaseDao.getPoint(userId);
+    public int getTotalPoint (String userId)throws Exception{
+        return purchaseDao.getTotalPoint(userId);
     }//보유 총포인트 조회
 
 }
