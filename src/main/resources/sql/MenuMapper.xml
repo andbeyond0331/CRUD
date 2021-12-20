@@ -102,10 +102,9 @@
 		{MENU_IMG3: VARCHAR})
 			</insert>
 
-	<insert id="addParty" parameterType="string">
-		INSERT 
-		INTO party( party_id, party_user_id, party_type, ref_id, party_role ) 
-		VALUES ( TO_CHAR(seq_party_party_id.NEXTVAL), #{partyUserId}, 'A', TO_CHAR(seq_post_post_id.CURRVAL), 'K' )
+	<insert id="addOptionGroup" parameterType="optionGroup">
+		insert into optiongroup (MENU_NO, OPTION_GROUP_NO, OPTION_NO, OPTION_GROUP_NAME, OPTION_NAME, OPTION_PRICE)
+		values ()
 	</insert>
 	
 	<insert 	id="addPost"		parameterType="post" >
