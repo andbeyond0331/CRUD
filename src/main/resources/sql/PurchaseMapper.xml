@@ -29,7 +29,7 @@
   		<result property="payRefundStatus" 		column="PAY_REFUND_STATUS" 		jdbcType="CHAR" />
   		<result property="payPrice" 			column="PAY_PRICE" 				jdbcType="NUMERIC" />
 
-		ORDER_NO, ORDER_USER_ID, ORDER_TRUCK_ID,
+
 
 
 		<!--OrderDetail Domain-->
