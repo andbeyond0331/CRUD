@@ -28,8 +28,8 @@ public class PurchaseDaoImpl implements PurchaseDao {
     public void addCart(OrderDetail orderDetail) throws Exception{
         sqlSession.insert("PurchaseMapper.addCart",orderDetail);
     }//장바구니에 정보 등록
-    public void addPurchase(Purchase purchase)throws Exception{
-        sqlSession.insert("PurchaseMapper.addPurchse",purchase);
+    public int addPurchase(Purchase purchase)throws Exception{
+        return sqlSession.insert("PurchaseMapper.addPurchse",purchase);
     }
     //주문번호 생성을 위해서
     public void updatePoint(Point point)throws Exception{
@@ -45,27 +45,27 @@ public class PurchaseDaoImpl implements PurchaseDao {
     public void updatePurchase(Purchase purchase)throws Exception{
         sqlSession.update("purchasMapper.updatePurchase",purchase);
     } //결제 시 결제에 대한 정보 업데이트
-    public void updateOrderRefusal (Purchase purchase)throws Exception{
-        sqlSession.update("purchaseMapper.updateOrderRefusal",purchase);
-    } //주문취소 사유
     public void updateTotalPoint (User user)throws Exception{
         sqlSession.update("purchaseMapper.updateTotalPoint",user);
     } //총포인트 수정
     public void updateCouponStatus (Coupon coupon)throws Exception{
         sqlSession.update("purchaseMapper.updateCouponStatus",coupon);
     } //쿠폰사용으로 사용유무수정
-    public void updateOrderCancel (Purchase purchase)throws Exception{
-        sqlSession.update("purchaseMapper.updateOrderCancel",purchase);
-    } //주문취소로 주문상태변경,주문취소사유
-    public void updaterefundStatus(Purchase purchase)throws Exception{
-        sqlSession.update("purchaseMapper.updatefundStatus",purchase);
-    }//주문거절로 주문상태변경,주문거절사유
     public void updateOrderTranCode (Purchase purchase) throws Exception{
         sqlSession.update("purchaseMapper.updateOrderTranCode",purchase);
     }//주문접수로 주문상태변경
     public void updateOrderCookingTime (Purchase purchase) throws Exception{
         sqlSession.update("purchaseMapper.updateOrderCookingTime",purchase);
     }//주문접수 시 예상조리시간
+    public void updateOrderCancel (Purchase purchase)throws Exception{
+        sqlSession.update("purchaseMapper.updateOrderCancel",purchase);
+    } //주문취소로 주문상태변경,주문취소사유
+    public void updateOrderRefusal (Purchase purchase)throws Exception{
+        sqlSession.update("purchaseMapper.updateOrderRefusal",purchase);
+    } //주문거절로 주문상태변경,주문취소사유
+    public void updateRefundStatus(Purchase purchase)throws Exception{
+        sqlSession.update("purchaseMapper.updatefundStatus",purchase);
+    }//환불처리 유무
     public void updateOrder(Purchase purchase)throws Exception{
         sqlSession.update("purchaseMapper.updateOrder",purchase);
     } //결제이후 결제정보 추가업데이트
@@ -82,9 +82,8 @@ public class PurchaseDaoImpl implements PurchaseDao {
         map.put("userId",userId);
         return sqlSession.selectList("PurchaseMapper.getCouponList",map);
     } //쿠폰 리스트를 출력
-    public List<Purchase> getCartList(Search search ,int orderNo)throws Exception{
+    public List<Purchase> getCartList(int orderNo)throws Exception{
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("search",search);
         map.put("orderNo",orderNo);
         return sqlSession.selectList("PurchaseMapper.getCartList",map);
     } //주문상세에 있는 정보 List?로 가져옴
@@ -112,8 +111,8 @@ public class PurchaseDaoImpl implements PurchaseDao {
 
 
 
-    public int getPoint (String userId)throws Exception{
-        return sqlSession.selectOne("purchaseMapper.getPoint",userId);
+    public int getTotalPoint (String userId)throws Exception{
+        return sqlSession.selectOne("purchaseMapper.getTotalPoint",userId);
     }//보유 총포인트 조회
     public int getCoupon(int couponNo)throws Exception{
         return sqlSession.selectOne("purchaseMapper.getCoupon",couponNo);

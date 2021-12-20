@@ -1,5 +1,8 @@
 package com.crud.ffin.service.domain;
 
+import lombok.Data;
+
+@Data
 public class OrderDetail {
 	
 	private int odNo;
