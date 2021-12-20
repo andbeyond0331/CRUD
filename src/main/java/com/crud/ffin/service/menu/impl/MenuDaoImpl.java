@@ -37,7 +37,7 @@ public class MenuDaoImpl implements MenuDao {
     @Override
     public void addOptionGroup(OptionGroup optionGroup) throws Exception {
 
-        sqlSession.insert("MenuMapper.addOptonGroup", optionGroup);
+        sqlSession.insert("MenuMapper.addOptionGroup", optionGroup);
     }
 
     @Override
