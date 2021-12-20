@@ -42,7 +42,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(User user) throws Exception {
+    public String phoneChkDuplication(String userPhone) throws Exception {
+        System.out.println("UserServiceImpl.phoneChkDuplication");
+        return userDao.phoneChkDuplication(userPhone);
+    }
+
+    @Override
+    public void addUserInfo(User user) throws Exception {
         System.out.println("UserServiceImpl.addUser");
         userDao.addUser(user);
     }
@@ -72,9 +78,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user) throws Exception {
+    public void updateUserInfo(User user) throws Exception {
         System.out.println("UserServiceImpl.updateUser");
-        userDao.updateUser(user);
+        userDao.updateUserInfo(user);
+    }
+
+    @Override
+    public void updateUserProfile(User user) throws Exception {
+        System.out.println("UserServiceImpl.updateUserProfile");
+        userDao.updateUserProfile(user);
+    }
+
+    @Override
+    public void updateUserMap(User user) throws Exception {
+        System.out.println("UserServiceImpl.updateUserMap");
+        userDao.updateUserMap(user);
     }
 
     @Override
@@ -96,12 +114,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateReport(int reportNo) throws Exception {
-        System.out.println("UserServiceImpl.updateReport");
-        userDao.updateReport(reportNo);
-    }
-
-    @Override
     public Report getReport(int reportNo) throws Exception {
         System.out.println("UserServiceImpl.getReport");
         return userDao.getReport(reportNo);
@@ -113,9 +125,5 @@ public class UserServiceImpl implements UserService {
         return userDao.getReportList(search);
     }
 
-    @Override
-    public void deleteReport(String reportNo) throws Exception {
-        System.out.println("UserServiceImpl.deleteReport");
-        userDao.deleteReport(reportNo);
-    }
+
 }
