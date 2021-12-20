@@ -1,14 +1,8 @@
 package com.crud.ffin.service.domain;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Vector;
-
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 public class User {
@@ -18,7 +12,7 @@ public class User {
 	private String userPassword;
 	private String userName;
 	private String userPhone;
-	private Date userBirth; 
+	private String userBirth;
 	private String userAddr;
 	private String userAddrDetail;
 	private Date userRegDate;

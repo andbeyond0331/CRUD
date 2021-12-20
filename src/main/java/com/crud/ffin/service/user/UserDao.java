@@ -19,7 +19,7 @@ public interface UserDao {
 
 
     //회원가입
-    public void addUser(User user) throws Exception;
+    public void addUserInfo(User user) throws Exception;
     //회원정보
     public User getUser(String userId) throws Exception;
     //회원목록

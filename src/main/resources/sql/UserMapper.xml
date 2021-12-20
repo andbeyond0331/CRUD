@@ -97,7 +97,7 @@
 			 	#{userAddrDetail : VARCHAR},
 			 	#{userEmail : VARCHAR},
 			 	'0',
-			 	SYSDATE())
+			 	DATE_FORMAT(SYSDATE(),'%Y-%M-%D'))
 	</insert>
 
 	<!--info수정-->

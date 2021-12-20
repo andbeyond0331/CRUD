@@ -44,8 +44,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void addUser(User user) throws Exception {
-        sqlSession.insert("UserMapper.addUser", user);
+    public void addUserInfo(User user) throws Exception {
+        sqlSession.insert("UserMapper.addUserInfo", user);
     }
 
     @Override

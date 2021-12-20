@@ -49,8 +49,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUserInfo(User user) throws Exception {
-        System.out.println("UserServiceImpl.addUser");
-        userDao.addUser(user);
+        System.out.println("UserServiceImpl.addUserInfo");
+        userDao.addUserInfo(user);
     }
 
     @Override

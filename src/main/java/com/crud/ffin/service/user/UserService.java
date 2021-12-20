@@ -3,9 +3,11 @@ package com.crud.ffin.service.user;
 import com.crud.ffin.common.Search;
 import com.crud.ffin.service.domain.Report;
 import com.crud.ffin.service.domain.User;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
+@Service
 public interface UserService {
 
 
