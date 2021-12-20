@@ -12,17 +12,16 @@ import lombok.Data;
 
 @Data
 public class User {
-	
-	
 
 	//user TABLE
-	private String userId;  //user_id
-	private String userPassword; //nickname
-	private String userName; //user_name
-	private String userPhone;  //phone
+	private String userId;
+	private String userPassword;
+	private String userName;
+	private String userPhone;
 	private Date userBirth; 
 	private String userAddr;
 	private String userAddrDetail;
+	private Date userRegDate;
 	private double userMapLa;
 	private double userMapLo;
 	private String reportCount;
@@ -30,21 +29,15 @@ public class User {
 	private int userEmailStatus;
 	private String userProImg;
 	private int userFavPlace;
+	private int userFavPlaceDetail;
 	private String userFavMenu;
 	private String userIntro;
 	private int userTotalPoint;
 	private int userByeStatus;
 	private int userByeReason;
+	private Date userByeRegDate;
 	private Date blackRegDate;
 	private Date blackRestPer;
 	private int role;
-	
-	
-
-	
-	
-	
-	
-	
 
 }

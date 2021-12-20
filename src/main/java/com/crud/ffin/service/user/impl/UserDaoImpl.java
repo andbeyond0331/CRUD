@@ -27,25 +27,30 @@ public class UserDaoImpl implements UserDao {
         System.out.println("Default Constructor :: UserDaoImpl.UserDaoImpl");
     }
 
-    //Method
+
     @Override
     public String idChkDuplication(String userId) throws Exception {
-        return null;
+        return sqlSession.selectOne("UserMapper.idChkDuplication", userId);
     }
 
     @Override
     public String emailChkDuplication(String userEmail) throws Exception {
-        return null;
+        return sqlSession.selectOne("UserMapper.emailChkDuplication", userEmail);
+    }
+
+    @Override
+    public String phoneChkDuplication(String userPhone) throws Exception {
+        return sqlSession.selectOne("UserMapper.phoneChkDuplication", userPhone);
     }
 
     @Override
     public void addUser(User user) throws Exception {
-
+        sqlSession.insert("UserMapper.addUser", user);
     }
 
     @Override
     public User getUser(String userId) throws Exception {
-        return null;
+        return sqlSession.selectOne("UserMapper.getUser", userId);
     }
 
     @Override
@@ -55,52 +60,52 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public String findUserId(String userId) throws Exception {
-        return null;
+        return sqlSession.selectOne("UserMapper.getUserId",userId);
     }
 
     @Override
     public void updatePassword(User user) throws Exception {
-
+        sqlSession.update("UserMapper.updatePassword", user);
     }
 
     @Override
-    public void updateUser(User user) throws Exception {
+    public void updateUserInfo(User user) throws Exception {
+        sqlSession.update("UserMapper.updateUserInfo", user);
+    }
 
+    @Override
+    public void updateUserProfile(User user) throws Exception {
+        sqlSession.update("UserMapper.updateUserProfile", user);
+    }
+
+    @Override
+    public void updateUserMap(User user) throws Exception {
+        sqlSession.update("UserMapper.updateUserMap",user);
     }
 
     @Override
     public void updateUserByeStatus(User user) throws Exception {
-
+        sqlSession.update("UserMapper.updateUserByeStatus", user);
     }
 
     @Override
     public void updateBlackStatus(User user) throws Exception {
-
+        sqlSession.update("UserMapper.updateBlackStatus", user);
     }
 
     @Override
     public void addReport(Report report) throws Exception {
-
-    }
-
-    @Override
-    public void updateReport(int reportNo) throws Exception {
-
+        sqlSession.insert("UserMapper.addReport",report);
     }
 
     @Override
     public Report getReport(int reportNo) throws Exception {
-        return null;
+        return sqlSession.selectOne("UserMapper.getReport", reportNo);
     }
 
     @Override
     public Map<String, Object> getReportList(Search search) throws Exception {
         return null;
-    }
-
-    @Override
-    public void deleteReport(String reportNo) throws Exception {
-
     }
 
     @Override
